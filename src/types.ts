@@ -25,7 +25,7 @@ export interface OutputEntry {
 }
 
 export interface AIConfig {
-  provider: 'openai' | 'deepseek' | 'custom';
+  provider: 'openai' | 'deepseek' | 'yunfan' | 'custom';
   apiKey: string;
   baseUrl: string;
   model: string;
@@ -49,14 +49,15 @@ export const TONES: { id: Tone; label: string }[] = [
 ];
 
 export const DEFAULT_AI_CONFIG: AIConfig = {
-  provider: 'openai',
-  apiKey: '',
-  baseUrl: 'https://api.openai.com/v1',
-  model: 'gpt-4o-mini',
+  provider: 'yunfan',
+  apiKey: import.meta.env.VITE_YUNFAN_API_KEY || '',
+  baseUrl: import.meta.env.VITE_YUNFAN_BASE_URL || 'http://localhost:8100/v1',
+  model: 'deepseek-v4-flash',
 };
 
 export const PROVIDER_PRESETS: Record<string, { baseUrl: string; models: string[] }> = {
   openai:   { baseUrl: 'https://api.openai.com/v1',       models: ['gpt-4o-mini', 'gpt-4o', 'gpt-4'] },
   deepseek: { baseUrl: 'https://api.deepseek.com/v1',      models: ['deepseek-chat', 'deepseek-reasoner'] },
+  yunfan:   { baseUrl: 'http://localhost:8100/v1',         models: ['deepseek-v4-flash', 'sensenova-6.7-flash-lite'] },
   custom:   { baseUrl: '',                                  models: [] },
 };

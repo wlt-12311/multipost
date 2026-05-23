@@ -44,6 +44,7 @@ export default function ApiKeyConfig({ config, onChange }: Props) {
               value={config.provider}
               onChange={e => handleProviderChange(e.target.value)}
             >
+              <option value="yunfan">☁️ YunFan AI Gateway</option>
               <option value="openai">OpenAI</option>
               <option value="deepseek">DeepSeek</option>
               <option value="custom">Custom (OpenAI-compatible)</option>

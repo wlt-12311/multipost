@@ -86,7 +86,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-left">
-          <h1 className="logo">MultiPost</h1>
+          <h1 className="logo">一篇多发 <small>MultiPost</small></h1>
           <span className="tagline">Write Once · Publish Everywhere</span>
         </div>
         <a
@@ -119,7 +119,7 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
-        <span>MultiPost — your content, your API key, your data never leaves your browser</span>
+        <span>一篇多发 — 你的内容，你的 API Key，数据不出浏览器</span>
         <span className="footer-links">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
           {' · '}
