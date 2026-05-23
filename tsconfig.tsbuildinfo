@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/types.ts","./src/components/ApiKeyConfig.tsx","./src/components/InputPanel.tsx","./src/components/OutputPanel.tsx","./src/components/PlatformSelector.tsx","./src/components/ToneSelector.tsx","./src/lib/ai.ts","./src/lib/prompts.ts","./src/lib/storage.ts"],"version":"5.8.3"}
