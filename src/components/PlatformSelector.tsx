@@ -17,7 +17,17 @@ export default function PlatformSelector({ selected, onChange }: Props) {
 
   return (
     <div className="platform-selector">
-      <label className="section-label">📤 Publish to</label>
+      <div className="platform-header">
+        <label className="section-label">📤 Publish to</label>
+        <div className="platform-actions">
+          <button className="select-all-btn" onClick={() => onChange(PLATFORMS.map(p => p.id))}>
+            Select All
+          </button>
+          <button className="select-all-btn" onClick={() => onChange([])}>
+            None
+          </button>
+        </div>
+      </div>
       <div className="platform-grid">
         {PLATFORMS.map(p => (
           <button

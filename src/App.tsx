@@ -4,6 +4,7 @@ import { DEFAULT_AI_CONFIG, PLATFORMS } from './types';
 import { callAI, validateConfig } from './lib/ai';
 import { buildSystemPrompt, buildUserMessage } from './lib/prompts';
 import { loadConfig, saveConfig } from './lib/storage';
+import { loadSource, saveSource } from './lib/storage';
 import InputPanel from './components/InputPanel';
 import PlatformSelector from './components/PlatformSelector';
 import ToneSelector from './components/ToneSelector';
@@ -11,7 +12,7 @@ import ApiKeyConfig from './components/ApiKeyConfig';
 import OutputPanel from './components/OutputPanel';
 
 export default function App() {
-  const [source, setSource] = useState('');
+  const [source, setSource] = useState(() => loadSource());
   const [platforms, setPlatforms] = useState<PlatformId[]>(['twitter', 'linkedin', 'xiaohongshu']);
   const [tone, setTone] = useState<Tone>('professional');
   const [aiConfig, setAiConfig] = useState<AIConfig>(() => loadConfig() || DEFAULT_AI_CONFIG);
@@ -20,6 +21,14 @@ export default function App() {
   const abortRef = useRef<AbortController | null>(null);
 
   const hasValidConfig = aiConfig.apiKey.trim().length > 0 && validateConfig(aiConfig) === null;
+
+  const handleCancel = useCallback(() => {
+    if (abortRef.current) {
+      abortRef.current.abort();
+      abortRef.current = null;
+    }
+    setGenerating(false);
+  }, []);
 
   const handleGenerate = useCallback(async () => {
     if (!source.trim() || platforms.length === 0) return;
@@ -32,6 +41,7 @@ export default function App() {
 
     // Save config on each successful generation
     saveConfig(aiConfig);
+    saveSource(source);
 
     // Initialise all entries
     const initialEntries: OutputEntry[] = platforms.map(pid => ({
@@ -82,6 +92,36 @@ export default function App() {
     ));
   };
 
+  const handleRegenerateSingle = useCallback(async (platformId: PlatformId) => {
+    const validationError = validateConfig(aiConfig);
+    if (validationError) {
+      alert(validationError);
+      return;
+    }
+
+    // Update single entry to loading state
+    setEntries(prev => prev.map(e =>
+      e.platformId === platformId ? { ...e, content: '', loading: true, error: null } : e
+    ));
+
+    try {
+      const systemPrompt = buildSystemPrompt(platformId, tone);
+      const userMessage = buildUserMessage(source, platformId);
+      const content = await callAI(aiConfig, [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userMessage },
+      ]);
+      setEntries(prev => prev.map(e =>
+        e.platformId === platformId ? { ...e, content, loading: false } : e
+      ));
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Unknown error';
+      setEntries(prev => prev.map(e =>
+        e.platformId === platformId ? { ...e, loading: false, error: errorMsg } : e
+      ));
+    }
+  }, [source, tone, aiConfig]);
+
   return (
     <div className="app">
       <header className="app-header">
@@ -111,10 +151,11 @@ export default function App() {
             value={source}
             onChange={setSource}
             onGenerate={handleGenerate}
+            onCancel={handleCancel}
             generating={generating}
             hasConfig={hasValidConfig}
           />
-          <OutputPanel entries={entries} onEdit={handleEdit} />
+          <OutputPanel entries={entries} onEdit={handleEdit} onRegenerate={handleRegenerateSingle} />
         </section>
       </main>
 

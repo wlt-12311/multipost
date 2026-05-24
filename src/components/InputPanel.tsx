@@ -4,11 +4,12 @@ interface Props {
   value: string;
   onChange: (value: string) => void;
   onGenerate: () => void;
+  onCancel?: () => void;
   generating: boolean;
   hasConfig: boolean;
 }
 
-export default function InputPanel({ value, onChange, onGenerate, generating, hasConfig }: Props) {
+export default function InputPanel({ value, onChange, onGenerate, onCancel, generating, hasConfig }: Props) {
   const [charCount, setCharCount] = useState(0);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,12 +34,12 @@ Example: paste a full article, a podcast transcript, or just your key points.`}
         rows={10}
       />
       <button
-        className="generate-btn"
-        onClick={onGenerate}
-        disabled={!value.trim() || generating || !hasConfig}
+        className={`generate-btn ${generating ? 'cancel-btn' : ''}`}
+        onClick={generating && onCancel ? onCancel : onGenerate}
+        disabled={!generating && (!value.trim() || !hasConfig)}
       >
         {generating ? (
-          <span className="generating-spinner">⟳ Adapting...</span>
+          <span className="cancel-label">✕ Cancel</span>
         ) : (
           <span>✨ Generate Platform Versions</span>
         )}
