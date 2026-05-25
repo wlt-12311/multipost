@@ -1,5 +1,6 @@
 import type { PlatformId } from '../types';
 import { PLATFORMS } from '../types';
+import { useLang, t } from '../i18n';
 
 interface Props {
   selected: PlatformId[];
@@ -7,6 +8,8 @@ interface Props {
 }
 
 export default function PlatformSelector({ selected, onChange }: Props) {
+  const { lang } = useLang();
+
   const toggle = (id: PlatformId) => {
     if (selected.includes(id)) {
       onChange(selected.filter(p => p !== id));
@@ -18,13 +21,13 @@ export default function PlatformSelector({ selected, onChange }: Props) {
   return (
     <div className="platform-selector">
       <div className="platform-header">
-        <label className="section-label">📤 Publish to</label>
+        <label className="section-label">{t(lang, 'platform.label')}</label>
         <div className="platform-actions">
           <button className="select-all-btn" onClick={() => onChange(PLATFORMS.map(p => p.id))}>
-            Select All
+            {t(lang, 'platform.selectAll')}
           </button>
           <button className="select-all-btn" onClick={() => onChange([])}>
-            None
+            {t(lang, 'platform.none')}
           </button>
         </div>
       </div>
@@ -37,8 +40,8 @@ export default function PlatformSelector({ selected, onChange }: Props) {
             onClick={() => toggle(p.id)}
           >
             <span className="platform-icon">{p.icon}</span>
-            <span className="platform-label">{p.label}</span>
-            <span className="platform-desc">{p.description}</span>
+            <span className="platform-label">{t(lang, `platform.${p.id}`)}</span>
+            <span className="platform-desc">{t(lang, `platform.${p.id}.desc`)}</span>
           </button>
         ))}
       </div>

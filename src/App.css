@@ -53,6 +53,11 @@ body {
   align-items: baseline;
   gap: 12px;
 }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -78,16 +83,6 @@ body {
   color: var(--text-dim);
   letter-spacing: 0.3px;
 }
-.tagline-en {
-  font-size: 0.75rem;
-  color: var(--text-dim);
-  opacity: 0.6;
-}
-.tagline-en::before {
-  content: '·';
-  margin: 0 6px;
-  opacity: 0.4;
-}
 .github-link {
   font-size: 0.8rem;
   color: var(--text-dim);
@@ -98,6 +93,21 @@ body {
   transition: all .2s;
 }
 .github-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.lang-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
 }

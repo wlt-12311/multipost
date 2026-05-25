@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLang, t } from '../i18n';
 
 interface Props {
   value: string;
@@ -11,6 +12,7 @@ interface Props {
 
 export default function InputPanel({ value, onChange, onGenerate, onCancel, generating, hasConfig }: Props) {
   const [charCount, setCharCount] = useState(0);
+  const { lang } = useLang();
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const v = e.target.value;
@@ -21,16 +23,14 @@ export default function InputPanel({ value, onChange, onGenerate, onCancel, gene
   return (
     <div className="input-panel">
       <div className="input-header">
-        <label className="section-label">📝 Source Content</label>
-        <span className="char-count">{charCount} chars</span>
+        <label className="section-label">{t(lang, 'input.label')}</label>
+        <span className="char-count">{charCount} {t(lang, 'input.chars')}</span>
       </div>
       <textarea
         className="source-input"
         value={value}
         onChange={handleChange}
-        placeholder={`Paste your blog post, script, notes, or bullet points here...
-
-Example: paste a full article, a podcast transcript, or just your key points.`}
+        placeholder={t(lang, 'input.placeholder')}
         rows={10}
       />
       <button
@@ -39,13 +39,13 @@ Example: paste a full article, a podcast transcript, or just your key points.`}
         disabled={!generating && (!value.trim() || !hasConfig)}
       >
         {generating ? (
-          <span className="cancel-label">✕ Cancel</span>
+          <span className="cancel-label">{t(lang, 'input.cancel')}</span>
         ) : (
-          <span>✨ Generate Platform Versions</span>
+          <span>{t(lang, 'input.generate')}</span>
         )}
       </button>
       {!hasConfig && (
-        <p className="hint">⚠️ Configure your API Key above to enable generation</p>
+        <p className="hint">⚠️ {t(lang, 'input.hint')}</p>
       )}
     </div>
   );

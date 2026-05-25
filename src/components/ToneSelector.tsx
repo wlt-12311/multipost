@@ -1,23 +1,33 @@
+import { useLang, t } from '../i18n';
 import type { Tone } from '../types';
-import { TONES } from '../types';
 
 interface Props {
   value: Tone;
   onChange: (tone: Tone) => void;
 }
 
+const TONES: { id: Tone; key: string }[] = [
+  { id: 'professional', key: 'tone.professional' },
+  { id: 'casual',       key: 'tone.casual' },
+  { id: 'promotional',  key: 'tone.promotional' },
+  { id: 'storytelling', key: 'tone.storytelling' },
+  { id: 'educational',  key: 'tone.educational' },
+];
+
 export default function ToneSelector({ value, onChange }: Props) {
+  const { lang } = useLang();
+
   return (
     <div className="tone-selector">
-      <label className="section-label">🎭 Tone</label>
+      <label className="section-label">{t(lang, 'tone.label')}</label>
       <div className="tone-grid">
-        {TONES.map(t => (
+        {TONES.map(tone => (
           <button
-            key={t.id}
-            className={`tone-btn ${value === t.id ? 'active' : ''}`}
-            onClick={() => onChange(t.id)}
+            key={tone.id}
+            className={`tone-btn ${value === tone.id ? 'active' : ''}`}
+            onClick={() => onChange(tone.id)}
           >
-            {t.label}
+            {t(lang, tone.key)}
           </button>
         ))}
       </div>

@@ -1,15 +1,18 @@
 import { useState, useCallback, useRef } from 'react';
 import type { PlatformId, Tone, OutputEntry, AIConfig } from './types';
-import { DEFAULT_AI_CONFIG, PLATFORMS } from './types';
+import { DEFAULT_AI_CONFIG, PLATFORMS, TONES } from './types';
 import { callAI, validateConfig } from './lib/ai';
 import { buildSystemPrompt, buildUserMessage } from './lib/prompts';
 import { loadConfig, saveConfig } from './lib/storage';
 import { loadSource, saveSource } from './lib/storage';
+import { LangContext, getStoredLang, storeLang, t } from './i18n';
+import type { Lang } from './i18n';
 import InputPanel from './components/InputPanel';
 import PlatformSelector from './components/PlatformSelector';
 import ToneSelector from './components/ToneSelector';
 import ApiKeyConfig from './components/ApiKeyConfig';
 import OutputPanel from './components/OutputPanel';
+import LangSwitcher from './components/LangSwitcher';
 
 export default function App() {
   const [source, setSource] = useState(() => loadSource());
@@ -18,7 +21,14 @@ export default function App() {
   const [aiConfig, setAiConfig] = useState<AIConfig>(() => loadConfig() || DEFAULT_AI_CONFIG);
   const [entries, setEntries] = useState<OutputEntry[]>([]);
   const [generating, setGenerating] = useState(false);
+  const [lang, setLang] = useState<Lang>(() => getStoredLang());
   const abortRef = useRef<AbortController | null>(null);
+
+  const handleLangChange = (next: Lang) => {
+    setLang(next);
+    storeLang(next);
+    document.title = t(next, 'app.tagline');
+  };
 
   const hasValidConfig = aiConfig.apiKey.trim().length > 0 && validateConfig(aiConfig) === null;
 
@@ -123,20 +133,27 @@ export default function App() {
   }, [source, tone, aiConfig]);
 
   return (
+    <LangContext.Provider value={{ lang, setLang: handleLangChange }}>
     <div className="app">
       <header className="app-header">
         <div className="header-left">
-          <h1 className="logo"><span className="cn-name">一篇多发</span><span className="en-name">MultiPost</span></h1>
-          <span className="tagline">一次撰写 · 全网发布 <span className="tagline-en">Write Once · Publish Everywhere</span></span>
+          <h1 className="logo">
+            <span className="cn-name">{t(lang, 'app.logo')}</span>
+            {lang === 'zh' && <span className="en-name">MultiPost</span>}
+          </h1>
+          <span className="tagline">{t(lang, 'app.tagline')}</span>
         </div>
-        <a
-          className="github-link"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          BYOK · v0.1
-        </a>
+        <div className="header-right">
+          <LangSwitcher />
+          <a
+            className="github-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t(lang, 'app.byok')}
+          </a>
+        </div>
       </header>
 
       <main className="app-main">
@@ -160,13 +177,14 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
-        <span>一篇多发 — 你的内容，你的 API Key，数据不出浏览器</span>
+        <span>{t(lang, 'app.footer')}</span>
         <span className="footer-links">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">{t(lang, 'footer.github')}</a>
           {' · '}
-          <a href="mailto:hello@yuzhiran.cn" rel="noopener noreferrer">Contact</a>
+          <a href="mailto:hello@yuzhiran.cn" rel="noopener noreferrer">{t(lang, 'footer.contact')}</a>
         </span>
       </footer>
     </div>
+    </LangContext.Provider>
   );
 }
