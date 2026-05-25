@@ -126,8 +126,8 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-left">
-          <h1 className="logo">一篇多发 <small>MultiPost</small></h1>
-          <span className="tagline">Write Once · Publish Everywhere</span>
+          <h1 className="logo"><span className="cn-name">一篇多发</span><span className="en-name">MultiPost</span></h1>
+          <span className="tagline">一次撰写 · 全网发布 <span className="tagline-en">Write Once · Publish Everywhere</span></span>
         </div>
         <a
           className="github-link"

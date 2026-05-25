@@ -56,15 +56,37 @@ body {
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.logo .cn-name {
   background: linear-gradient(135deg, var(--accent), var(--accent-glow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.logo .en-name {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
 .tagline {
   font-size: 0.85rem;
   color: var(--text-dim);
   letter-spacing: 0.3px;
+}
+.tagline-en {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+.tagline-en::before {
+  content: '·';
+  margin: 0 6px;
+  opacity: 0.4;
 }
 .github-link {
   font-size: 0.8rem;
