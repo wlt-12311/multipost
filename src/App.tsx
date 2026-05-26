@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import type { PlatformId, Tone, OutputEntry, AIConfig } from './types';
 import { DEFAULT_AI_CONFIG, PLATFORMS, TONES } from './types';
 import { callAI, validateConfig } from './lib/ai';
@@ -26,6 +26,17 @@ export default function App() {
   const [generating, setGenerating] = useState(false);
   const [lang, setLang] = useState<Lang>(() => getStoredLang());
   const abortRef = useRef<AbortController | null>(null);
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // 窗口宽度变化时自动关闭移动端侧边栏
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 768) setSidebarOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const handleLangChange = (next: Lang) => {
     setLang(next);
@@ -140,6 +151,15 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-left">
+          <button
+            className={`hamburger-btn${sidebarOpen ? ' active' : ''}`}
+            onClick={() => setSidebarOpen(prev => !prev)}
+            aria-label="Toggle sidebar"
+          >
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+            <span className="hamburger-line" />
+          </button>
           <h1 className="logo">
             <span className="cn-name">宇之然-多境</span>
           </h1>
@@ -161,11 +181,12 @@ export default function App() {
       </header>
 
       <main className="app-main">
-        <aside className="config-sidebar">
+        <aside className={`config-sidebar${sidebarOpen ? ' sidebar-open' : ''}`}>
           <ApiKeyConfig config={aiConfig} onChange={setAiConfig} />
           <ToneSelector value={tone} onChange={setTone} />
           <PlatformSelector selected={platforms} onChange={setPlatforms} />
         </aside>
+        {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
         <section className="content-area">
           <InputPanel
