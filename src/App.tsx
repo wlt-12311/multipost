@@ -139,7 +139,7 @@ export default function App() {
         <div className="header-left">
           <h1 className="logo">
             <span className="cn-name">{t(lang, 'app.logo')}</span>
-            {lang === 'zh' && <span className="en-name">MultiPost</span>}
+            {lang === 'zh' && <span className="en-name">MultiScene</span>}
           </h1>
           <span className="tagline">{t(lang, 'app.tagline')}</span>
         </div>

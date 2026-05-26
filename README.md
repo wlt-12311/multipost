@@ -1,4 +1,4 @@
-# 一篇多发 (MultiPost)
+# 多境 (MultiScene)
 
 > 写一次，发所有平台 — AI 多平台内容适配工具
 >

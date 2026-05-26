@@ -313,6 +313,27 @@ body {
   font-size: 0.75rem;
   color: var(--text-dim);
 }
+.usage-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(102,126,234,.08);
+  border: 1px solid rgba(102,126,234,.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+.hint-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.hint-text {
+  flex: 1;
+}
 .source-input {
   width: 100%;
   background: rgba(0,0,0,.3);

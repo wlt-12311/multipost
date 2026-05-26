@@ -26,6 +26,10 @@ export default function InputPanel({ value, onChange, onGenerate, onCancel, gene
         <label className="section-label">{t(lang, 'input.label')}</label>
         <span className="char-count">{charCount} {t(lang, 'input.chars')}</span>
       </div>
+      <div className="usage-hint">
+        <span className="hint-icon">💡</span>
+        <span className="hint-text">{t(lang, 'input.hint.text')}</span>
+      </div>
       <textarea
         className="source-input"
         value={value}
