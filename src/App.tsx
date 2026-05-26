@@ -14,6 +14,9 @@ import ApiKeyConfig from './components/ApiKeyConfig';
 import OutputPanel from './components/OutputPanel';
 import LangSwitcher from './components/LangSwitcher';
 
+const SITE_URL = 'https://www.yzrcloud.cn';
+const AI_URL = 'https://ai.yzrcloud.cn';
+
 export default function App() {
   const [source, setSource] = useState(() => loadSource());
   const [platforms, setPlatforms] = useState<PlatformId[]>(['twitter', 'linkedin', 'xiaohongshu']);
@@ -138,13 +141,14 @@ export default function App() {
       <header className="app-header">
         <div className="header-left">
           <h1 className="logo">
-            <span className="cn-name">{t(lang, 'app.logo')}</span>
-            {lang === 'zh' && <span className="en-name">MultiScene</span>}
+            <span className="cn-name">宇之然-多境</span>
           </h1>
           <span className="tagline">{t(lang, 'app.tagline')}</span>
         </div>
         <div className="header-right">
           <LangSwitcher />
+          <a className="github-link" href={SITE_URL} target="_blank" rel="noopener noreferrer">云帆</a>
+          <a className="github-link" href={AI_URL} target="_blank" rel="noopener noreferrer">AI能力引擎</a>
           <a
             className="github-link"
             href="#"
@@ -182,6 +186,19 @@ export default function App() {
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">{t(lang, 'footer.github')}</a>
           {' · '}
           <a href="mailto:hello@yuzhiran.cn" rel="noopener noreferrer">{t(lang, 'footer.contact')}</a>
+        </span>
+        <br />
+        <span style={{ opacity: 0.5, fontSize: '0.85em' }}>
+          © 2026 北京宇之然科技中心
+        </span>
+        <br />
+        <span style={{ opacity: 0.5, fontSize: '0.85em' }}>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>京ICP备2026007249号-5</a>
+          <span style={{ margin: '0 6px' }}>|</span>
+          <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011502039866" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+            <img src="/multiscene/images/gongan-beian.png" alt="公安备案图标" style={{ width: 16, height: 18, verticalAlign: 'middle', marginRight: 3 }} />
+            京公网安备11011502039866号
+          </a>
         </span>
       </footer>
     </div>
