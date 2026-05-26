@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function InputPanel({ value, onChange, onGenerate, onCancel, generating, hasConfig }: Props) {
-  const [charCount, setCharCount] = useState(0);
+  const [charCount, setCharCount] = useState(value.length);
   const { lang } = useLang();
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

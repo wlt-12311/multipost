@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { OutputEntry, PlatformId } from '../types';
 import { PLATFORMS } from '../types';
 import { useLang, t } from '../i18n';
+import { renderMarkdown } from '../lib/renderer';
 
 interface Props {
   entries: OutputEntry[];
@@ -46,7 +47,7 @@ export default function OutputPanel({ entries, onEdit, onRegenerate }: Props) {
         <div className="output-header-left">
           <h2 className="output-title">{t(lang, 'output.title')}</h2>
           {loading > 0 && (
-            <span className="progress-badge">{t(lang, 'output.progress', { done, total })}</span>
+            <span className="progress-badge">{t(lang, 'output.progress', { done: done.length, total })}</span>
           )}
         </div>
         {done.length > 0 && (
@@ -106,6 +107,7 @@ export default function OutputPanel({ entries, onEdit, onRegenerate }: Props) {
 
 function OutputContent({ content, platformId, onEdit, loading, onRegenerate }: { content: string; platformId: PlatformId; onEdit: (c: string) => void; loading?: boolean; onRegenerate?: () => void }) {
   const [copied, setCopied] = useState(false);
+  const [editing, setEditing] = useState(false);
   const { lang } = useLang();
 
   const handleCopy = async () => {
@@ -116,12 +118,19 @@ function OutputContent({ content, platformId, onEdit, loading, onRegenerate }: {
 
   return (
     <div className="output-content">
-      <textarea
-        className="output-textarea"
-        value={content}
-        onChange={e => onEdit(e.target.value)}
-        rows={8}
-      />
+      {editing ? (
+        <textarea
+          className="output-textarea"
+          value={content}
+          onChange={e => onEdit(e.target.value)}
+          rows={8}
+        />
+      ) : (
+        <div
+          className="rendered-content"
+          dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }}
+        />
+      )}
       <div className="output-actions">
         <div className="output-actions-left">
           <button className="copy-btn" onClick={handleCopy}>
@@ -132,6 +141,9 @@ function OutputContent({ content, platformId, onEdit, loading, onRegenerate }: {
               {t(lang, 'output.regenerate')}
             </button>
           )}
+          <button className="edit-toggle-btn" onClick={() => setEditing(!editing)}>
+            {editing ? '👁 ' + t(lang, 'output.preview') : '✏️ ' + t(lang, 'output.edit')}
+          </button>
         </div>
         <span className="word-count">
           {platformId === 'twitter'

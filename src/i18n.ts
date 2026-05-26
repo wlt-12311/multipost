@@ -43,6 +43,8 @@ const translations: Record<Lang, Record<string, string>> = {
     'output.copied': '✓ 已复制！',
     'output.copy': '📋 复制',
     'output.regenerate': '🔄 重新生成',
+    'output.edit': '编辑',
+    'output.preview': '预览',
     'output.tweets': '条推文',
     'output.chars': '字符',
 
@@ -117,6 +119,8 @@ const translations: Record<Lang, Record<string, string>> = {
     'output.copied': '✓ Copied!',
     'output.copy': '📋 Copy',
     'output.regenerate': '🔄 Regenerate',
+    'output.edit': 'Edit',
+    'output.preview': 'Preview',
     'output.tweets': 'tweets',
     'output.chars': 'chars',
 
