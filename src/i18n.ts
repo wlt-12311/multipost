@@ -10,6 +10,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'app.byok': 'BYOK · v0.1',
     'app.langBtn': 'English',
 
+    'tab.rewrite': '内容改写',
+    'tab.voiceover': '场景配音',
+
     'input.hint.title': '💡 如何使用',
     'input.hint.text': '输入一句话、产品描述或几个要点，AI 会自动为选中的平台生成适配的营销内容。',
 
@@ -89,6 +92,9 @@ const translations: Record<Lang, Record<string, string>> = {
     'app.footer': 'MultiScene — your content, your API key, your data never leaves your browser',
     'app.byok': 'BYOK · v0.1',
     'app.langBtn': '中文',
+
+    'tab.rewrite': 'Content Rewrite',
+    'tab.voiceover': 'Voiceover',
 
     'input.hint.title': '💡 How to Use',
     'input.hint.text': 'Drop a brief, product description, or a few bullet points — AI generates platform-optimized content for your selected channels.',

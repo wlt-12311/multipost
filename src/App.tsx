@@ -13,11 +13,15 @@ import ToneSelector from './components/ToneSelector';
 import ApiKeyConfig from './components/ApiKeyConfig';
 import OutputPanel from './components/OutputPanel';
 import LangSwitcher from './components/LangSwitcher';
+import VoiceoverTab from './components/VoiceoverTab';
+
+type Tab = 'rewrite' | 'voiceover';
 
 const SITE_URL = 'https://www.yzrcloud.cn';
 const AI_URL = 'https://ai.yzrcloud.cn';
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState<Tab>('rewrite');
   const [source, setSource] = useState(() => loadSource());
   const [platforms, setPlatforms] = useState<PlatformId[]>(['twitter', 'linkedin', 'xiaohongshu']);
   const [tone, setTone] = useState<Tone>('professional');
@@ -161,9 +165,25 @@ export default function App() {
             <span className="hamburger-line" />
           </button>
           <h1 className="logo">
-            <span className="cn-name">宇之然-多境</span>
+            <span className="cn-name">{t(lang, 'app.logo')}</span>
           </h1>
           <span className="tagline">{t(lang, 'app.tagline')}</span>
+        </div>
+        <div className="header-center">
+          <nav className="tab-nav">
+            <button
+              className={`tab-btn ${activeTab === 'rewrite' ? 'active' : ''}`}
+              onClick={() => setActiveTab('rewrite')}
+            >
+              ✍️ {t(lang, 'tab.rewrite')}
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'voiceover' ? 'active' : ''}`}
+              onClick={() => setActiveTab('voiceover')}
+            >
+              🎙️ {t(lang, 'tab.voiceover')}
+            </button>
+          </nav>
         </div>
         <div className="header-right">
           <LangSwitcher />
@@ -183,21 +203,32 @@ export default function App() {
       <main className="app-main">
         <aside className={`config-sidebar${sidebarOpen ? ' sidebar-open' : ''}`}>
           <ApiKeyConfig config={aiConfig} onChange={setAiConfig} />
-          <ToneSelector value={tone} onChange={setTone} />
-          <PlatformSelector selected={platforms} onChange={setPlatforms} />
+          {activeTab === 'rewrite' && (
+            <>
+              <ToneSelector value={tone} onChange={setTone} />
+              <PlatformSelector selected={platforms} onChange={setPlatforms} />
+            </>
+          )}
         </aside>
         {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
 
         <section className="content-area">
-          <InputPanel
-            value={source}
-            onChange={setSource}
-            onGenerate={handleGenerate}
-            onCancel={handleCancel}
-            generating={generating}
-            hasConfig={hasValidConfig}
-          />
-          <OutputPanel entries={entries} onEdit={handleEdit} onRegenerate={handleRegenerateSingle} />
+          {activeTab === 'rewrite' && (
+            <>
+              <InputPanel
+                value={source}
+                onChange={setSource}
+                onGenerate={handleGenerate}
+                onCancel={handleCancel}
+                generating={generating}
+                hasConfig={hasValidConfig}
+              />
+              <OutputPanel entries={entries} onEdit={handleEdit} onRegenerate={handleRegenerateSingle} />
+            </>
+          )}
+          {activeTab === 'voiceover' && (
+            <VoiceoverTab aiConfig={aiConfig} />
+          )}
         </section>
       </main>
 
