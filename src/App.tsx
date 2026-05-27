@@ -14,6 +14,7 @@ import ApiKeyConfig from './components/ApiKeyConfig';
 import OutputPanel from './components/OutputPanel';
 import LangSwitcher from './components/LangSwitcher';
 import VoiceoverTab from './components/VoiceoverTab';
+import CustomerService from './components/CustomerService';
 
 type Tab = 'rewrite' | 'voiceover';
 
@@ -232,6 +233,8 @@ export default function App() {
         </section>
       </main>
 
+      <CustomerService />
+
       <footer className="app-footer">
         <div className="footer-qr-row">
           <div className="footer-qr-item">
@@ -249,6 +252,10 @@ export default function App() {
           <div className="footer-qr-item">
             <img src="/images/yzr/kefu.png" alt="微信客服" className="footer-qr-img" />
             <span>微信客服</span>
+          </div>
+          <div className="footer-qr-item">
+            <img src="/images/yzr/qq-group.png" alt="宇之然交流群" className="footer-qr-img" />
+            <span>宇之然交流群</span>
           </div>
         </div>
         <span>{t(lang, 'app.footer')}</span>
