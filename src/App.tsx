@@ -233,6 +233,24 @@ export default function App() {
       </main>
 
       <footer className="app-footer">
+        <div className="footer-qr-row">
+          <div className="footer-qr-item">
+            <img src="/images/yzr/yuzhiran.jpg" alt="微信公众号" className="footer-qr-img" />
+            <span>微信公众号</span>
+          </div>
+          <div className="footer-qr-item">
+            <img src="/images/yzr/yuzhiran-tech.jpg" alt="微信服务号" className="footer-qr-img" />
+            <span>微信服务号</span>
+          </div>
+          <div className="footer-qr-item">
+            <img src="/images/yzr/yuzhiran-yhl.jpg" alt="小程序" className="footer-qr-img" />
+            <span>小程序</span>
+          </div>
+          <div className="footer-qr-item">
+            <img src="/images/yzr/kefu.png" alt="微信客服" className="footer-qr-img" />
+            <span>微信客服</span>
+          </div>
+        </div>
         <span>{t(lang, 'app.footer')}</span>
         <span className="footer-links">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">{t(lang, 'footer.github')}</a>
