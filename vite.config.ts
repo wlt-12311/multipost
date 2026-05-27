@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/multiscene/',
+  base: '/',
   server: { port: 1420, host: '0.0.0.0' },
 })

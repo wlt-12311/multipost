@@ -217,7 +217,7 @@ export default function App() {
           <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>京ICP备2026007249号-5</a>
           <span style={{ margin: '0 6px' }}>|</span>
           <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011502039866" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
-            <img src="/multiscene/images/gongan-beian.png" alt="公安备案图标" style={{ width: 16, height: 18, verticalAlign: 'middle', marginRight: 3 }} />
+            <img src="/images/gongan-beian.png" alt="公安备案图标" style={{ width: 16, height: 18, verticalAlign: 'middle', marginRight: 3 }} />
             京公网安备11011502039866号
           </a>
         </span>
