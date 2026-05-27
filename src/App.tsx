@@ -258,25 +258,24 @@ export default function App() {
             <span>宇之然QQ交流群</span>
           </div>
         </div>
-        <span>{t(lang, 'app.footer')}</span>
-        <span className="footer-links">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">{t(lang, 'footer.github')}</a>
-          {' · '}
-          <a href="mailto:hello@yuzhiran.cn" rel="noopener noreferrer">{t(lang, 'footer.contact')}</a>
-        </span>
-        <br />
-        <span style={{ opacity: 0.5, fontSize: '0.85em' }}>
-          © 2026 北京宇之然科技中心
-        </span>
-        <br />
-        <span style={{ opacity: 0.5, fontSize: '0.85em' }}>
-          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>京ICP备2026007249号-5</a>
-          <span style={{ margin: '0 6px' }}>|</span>
-          <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011502039866" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
-            <img src="/images/gongan-beian.png" alt="公安备案图标" style={{ width: 16, height: 18, verticalAlign: 'middle', marginRight: 3 }} />
-            京公网安备11011502039866号
-          </a>
-        </span>
+        <div className="footer-info">
+          <span>{t(lang, 'app.footer')}</span>
+          <span className="footer-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">{t(lang, 'footer.github')}</a>
+            {' · '}
+            <a href="mailto:hello@yuzhiran.cn" rel="noopener noreferrer">{t(lang, 'footer.contact')}</a>
+            {' · '}
+            © 2026 北京宇之然科技中心
+          </span>
+          <span style={{ opacity: 0.5, fontSize: '0.85em' }}>
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>京ICP备2026007249号-5</a>
+            <span style={{ margin: '0 6px' }}>|</span>
+            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011502039866" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
+              <img src="/images/gongan-beian.png" alt="公安备案图标" style={{ width: 16, height: 18, verticalAlign: 'middle', marginRight: 3 }} />
+              京公网安备11011502039866号
+            </a>
+          </span>
+        </div>
       </footer>
     </div>
     </LangContext.Provider>
