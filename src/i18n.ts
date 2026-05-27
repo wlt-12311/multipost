@@ -13,9 +13,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'input.hint.title': '💡 如何使用',
     'input.hint.text': '输入一句话、产品描述或几个要点，AI 会自动为选中的平台生成适配的营销内容。',
 
-    'config.configured': 'API Key 已配置',
     'config.configure': '配置 AI 服务商',
+    'config.configured': 'AI 服务商已配置',
     'config.provider': '服务商',
+    'config.yunfan.connected': '使用云帆 AI 网关，无需额外配置',
     'config.baseUrl': '接口地址',
     'config.model': '模型',
     'config.apiKey': 'API Key',
@@ -92,9 +93,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'input.hint.title': '💡 How to Use',
     'input.hint.text': 'Drop a brief, product description, or a few bullet points — AI generates platform-optimized content for your selected channels.',
 
-    'config.configured': 'API Key configured',
     'config.configure': 'Configure AI Provider',
+    'config.configured': 'AI Provider configured',
     'config.provider': 'Provider',
+    'config.yunfan.connected': 'Connected to YunFan AI Gateway',
     'config.baseUrl': 'Base URL',
     'config.model': 'Model',
     'config.apiKey': 'API Key',

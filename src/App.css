@@ -190,6 +190,26 @@ body {
 .field-row select:focus {
   border-color: var(--accent);
 }
+.yunfan-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
+.yunfan-status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green, #22c55e);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
 .clear-btn {
   background: transparent;
   border: 1px solid var(--red);

@@ -32,6 +32,8 @@ export default function ApiKeyConfig({ config, onChange }: Props) {
     onChange({ ...config, apiKey: '' });
   };
 
+  const isYunfan = config.provider === 'yunfan';
+
   return (
     <div className="api-config">
       <div className="api-header" onClick={() => setShow(!show)}>
@@ -52,35 +54,44 @@ export default function ApiKeyConfig({ config, onChange }: Props) {
               <option value="custom">{t(lang, 'config.provider.custom')}</option>
             </select>
           </div>
-          <div className="field-row">
-            <label>{t(lang, 'config.baseUrl')}</label>
-            <input
-              type="text"
-              value={config.baseUrl}
-              onChange={e => update({ baseUrl: e.target.value })}
-              placeholder="https://api.openai.com/v1"
-            />
-          </div>
-          <div className="field-row">
-            <label>{t(lang, 'config.model')}</label>
-            <input
-              type="text"
-              value={config.model}
-              onChange={e => update({ model: e.target.value })}
-              placeholder="gpt-4o-mini"
-            />
-          </div>
-          <div className="field-row">
-            <label>{t(lang, 'config.apiKey')}</label>
-            <input
-              type="password"
-              value={config.apiKey}
-              onChange={e => update({ apiKey: e.target.value })}
-              placeholder="sk-..."
-            />
-          </div>
-          {config.apiKey && (
-            <button className="clear-btn" onClick={handleClear}>{t(lang, 'config.clear')}</button>
+          {isYunfan ? (
+            <div className="yunfan-status">
+              <span className="yunfan-status-icon">✓</span>
+              <span>{t(lang, 'config.yunfan.connected')}</span>
+            </div>
+          ) : (
+            <>
+              <div className="field-row">
+                <label>{t(lang, 'config.baseUrl')}</label>
+                <input
+                  type="text"
+                  value={config.baseUrl}
+                  onChange={e => update({ baseUrl: e.target.value })}
+                  placeholder="https://api.openai.com/v1"
+                />
+              </div>
+              <div className="field-row">
+                <label>{t(lang, 'config.model')}</label>
+                <input
+                  type="text"
+                  value={config.model}
+                  onChange={e => update({ model: e.target.value })}
+                  placeholder="gpt-4o-mini"
+                />
+              </div>
+              <div className="field-row">
+                <label>{t(lang, 'config.apiKey')}</label>
+                <input
+                  type="password"
+                  value={config.apiKey}
+                  onChange={e => update({ apiKey: e.target.value })}
+                  placeholder="sk-..."
+                />
+              </div>
+              {config.apiKey && (
+                <button className="clear-btn" onClick={handleClear}>{t(lang, 'config.clear')}</button>
+              )}
+            </>
           )}
         </div>
       )}
