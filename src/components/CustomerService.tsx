@@ -135,31 +135,9 @@ export default function CustomerService() {
               </p>
             </div>
 
-            {/* Contact Button */}
-            <div style={{ textAlign: 'center', padding: '0 24px 16px' }}>
-              <a
-                href="mailto:contact@yuzhiran.com"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 6,
-                  padding: '10px 28px', borderRadius: 8,
-                  background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                  color: '#fff', fontSize: 14, fontWeight: 600,
-                  textDecoration: 'none', transition: 'opacity .2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.opacity = '.85'; }}
-                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; }}
-              >
-                <svg width="16" height="16" viewBox="0 0 1024 1024" fill="white">
-                  <path d="M128 224v512a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V224zm0-64h768a64 64 0 0 1 64 64v512a128 128 0 0 1-128 128H192A128 128 0 0 1 64 736V224a64 64 0 0 1 64-64" />
-                  <path d="M904 224 656.512 506.88a192 192 0 0 1-289.024 0L120 224zm-698.944 0 210.56 240.704a128 128 0 0 0 192.704 0L818.944 224z" />
-                </svg>
-                在线咨询
-              </a>
-            </div>
-
             {/* Quick Links */}
             <div style={{
-              padding: '12px 24px 20px',
+              padding: '20px 24px 20px',
               borderTop: '1px solid #3a3a6a',
             }}>
               <h4 style={{ margin: '0 0 8px', fontSize: 13, color: '#8888aa', fontWeight: 500 }}>

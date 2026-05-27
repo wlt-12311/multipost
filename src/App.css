@@ -705,12 +705,15 @@ body {
   border: 1px solid var(--border);
   object-fit: cover;
   transition: transform .2s;
+  cursor: pointer;
 }
 .footer-qr-img:hover {
-  transform: scale(2.5);
+  transform: scale(3);
+  transform-origin: center bottom;
   z-index: 10;
   position: relative;
-  box-shadow: 0 4px 20px rgba(0,0,0,.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  border-radius: 8px;
 }
 .app-footer {
   display: flex;

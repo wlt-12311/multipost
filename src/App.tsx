@@ -246,16 +246,16 @@ export default function App() {
             <span>微信服务号</span>
           </div>
           <div className="footer-qr-item">
-            <img src="/images/yzr/yuzhiran-yhl.jpg" alt="小程序" className="footer-qr-img" />
-            <span>小程序</span>
+            <img src="/images/yzr/yuzhiran-yhl.jpg" alt="微信小程序" className="footer-qr-img" />
+            <span>微信小程序</span>
           </div>
           <div className="footer-qr-item">
             <img src="/images/yzr/kefu.png" alt="微信客服" className="footer-qr-img" />
             <span>微信客服</span>
           </div>
           <div className="footer-qr-item">
-            <img src="/images/yzr/qq-group.png" alt="宇之然交流群" className="footer-qr-img" />
-            <span>宇之然交流群</span>
+            <img src="/images/yzr/qq-group.png" alt="宇之然QQ交流群" className="footer-qr-img" />
+            <span>宇之然QQ交流群</span>
           </div>
         </div>
         <span>{t(lang, 'app.footer')}</span>
