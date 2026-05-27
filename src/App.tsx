@@ -14,12 +14,10 @@ import ApiKeyConfig from './components/ApiKeyConfig';
 import OutputPanel from './components/OutputPanel';
 import LangSwitcher from './components/LangSwitcher';
 import VoiceoverTab from './components/VoiceoverTab';
-import CustomerService from './components/CustomerService';
 
 type Tab = 'rewrite' | 'voiceover';
 
-const SITE_URL = 'https://www.yzrcloud.cn';
-const AI_URL = 'https://ai.yzrcloud.cn';
+const SITE_URL = 'https://github.com/yuzhiran/multipost';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('rewrite');
@@ -188,8 +186,7 @@ export default function App() {
         </div>
         <div className="header-right">
           <LangSwitcher />
-          <a className="github-link" href={SITE_URL} target="_blank" rel="noopener noreferrer">云帆</a>
-          <a className="github-link" href={AI_URL} target="_blank" rel="noopener noreferrer">AI能力引擎</a>
+          <a className="github-link" href={SITE_URL} target="_blank" rel="noopener noreferrer">⭐ Star on GitHub</a>
           <a
             className="github-link"
             href="#"
@@ -233,47 +230,15 @@ export default function App() {
         </section>
       </main>
 
-      <CustomerService />
-
       <footer className="app-footer">
-        <div className="footer-qr-row">
-          <div className="footer-qr-item">
-            <img src="/images/yzr/yuzhiran.jpg" alt="微信公众号" className="footer-qr-img" />
-            <span>微信公众号</span>
-          </div>
-          <div className="footer-qr-item">
-            <img src="/images/yzr/yuzhiran-tech.jpg" alt="微信服务号" className="footer-qr-img" />
-            <span>微信服务号</span>
-          </div>
-          <div className="footer-qr-item">
-            <img src="/images/yzr/yuzhiran-yhl.jpg" alt="微信小程序" className="footer-qr-img" />
-            <span>微信小程序</span>
-          </div>
-          <div className="footer-qr-item">
-            <img src="/images/yzr/kefu.png" alt="微信客服" className="footer-qr-img" />
-            <span>微信客服</span>
-          </div>
-          <div className="footer-qr-item">
-            <img src="/images/yzr/qq-group.png" alt="宇之然QQ交流群" className="footer-qr-img" />
-            <span>宇之然QQ交流群</span>
-          </div>
-        </div>
         <div className="footer-info">
           <span>{t(lang, 'app.footer')}</span>
           <span className="footer-links">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">{t(lang, 'footer.github')}</a>
+            <a href="https://github.com/yuzhiran/multipost" target="_blank" rel="noopener noreferrer">GitHub</a>
             {' · '}
             <a href="mailto:hello@yuzhiran.cn" rel="noopener noreferrer">{t(lang, 'footer.contact')}</a>
             {' · '}
-            © 2026 北京宇之然科技中心
-          </span>
-          <span style={{ opacity: 0.5, fontSize: '0.85em' }}>
-            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>京ICP备2026007249号-5</a>
-            <span style={{ margin: '0 6px' }}>|</span>
-            <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011502039866" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
-              <img src="/images/gongan-beian.png" alt="公安备案图标" style={{ width: 16, height: 18, verticalAlign: 'middle', marginRight: 3 }} />
-              京公网安备11011502039866号
-            </a>
+            MIT License
           </span>
         </div>
       </footer>

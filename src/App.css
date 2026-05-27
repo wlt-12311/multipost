@@ -683,38 +683,6 @@ body {
 .rendered-content a:hover { color: #8b9cf7; }
 
 /* ── Footer ── */
-.footer-qr-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.footer-qr-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
-  color: var(--text-dim);
-}
-.footer-qr-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  object-fit: cover;
-  transition: transform .2s;
-  cursor: pointer;
-}
-.footer-qr-img:hover {
-  transform: scale(3);
-  transform-origin: center bottom;
-  z-index: 10;
-  position: relative;
-  box-shadow: 0 8px 32px rgba(0,0,0,.6);
-  border-radius: 8px;
-}
 .app-footer {
   display: flex;
   flex-direction: column;

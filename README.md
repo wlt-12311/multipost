@@ -1,43 +1,74 @@
-# 多境 (MultiScene)
+# MultiPost — Write Once, Publish Everywhere
 
-> 写一次，发所有平台 — AI 多平台内容适配工具
->
-> 开源 · BYOK 自部署 · 自由使用
+> AI-powered content repurposing tool for creators and indie makers.
+> Write once, adapt for Twitter, LinkedIn, Xiaohongshu, WeChat, and more.
 
-## 🚀 快速开始
+![screenshot](https://img.shields.io/badge/status-alpha-yellow)
+![license](https://img.shields.io/badge/license-MIT-green)
+[![GitHub stars](https://img.shields.io/github/stars/yuzhiran/multipost?style=social)](https://github.com/yuzhiran/multipost)
+
+## ✨ Features
+
+- **One input, multiple outputs** — Write source content once, AI adapts it for 6+ platforms
+- **5 tone styles** — Professional, Casual, Storytelling, Educational, Promotional
+- **Multi-language** — Generate in Chinese or English (more coming)
+- **BYOK** — Use your own OpenAI / DeepSeek / compatible API key. Data stays in your browser.
+- **Voiceover** — Text-to-speech for scene dubbing (requires API key with TTS support)
+- **Standalone** — No backend, no database, no account needed
+
+## 🚀 Quick Start
 
 ```bash
 npm install
-npm run dev    # http://localhost:5174
+npm run dev      # http://localhost:1420
 ```
 
-## 🔧 配置
+Or build for production:
 
-在 `.env` 中设置你的 AI API（支持 OpenAI 兼容接口）：
-
-```
-VITE_API_BASE_URL=http://localhost:8100/v1
-VITE_API_KEY=sk-yzr-...
+```bash
+npm run build
+npm run preview  # Serve the built files locally
 ```
 
-## ✨ 功能
+## 🛠️ Configuration
 
-- 输入源内容 → AI 适配到 Twitter、LinkedIn、微信、小红书等平台
-- 5 种语气风格（专业/朋友/故事/教育/促销）
-- 中英文双语生成
-- 单独重新生成单个平台内容
-- 导出全部为 Markdown
+**BYOK mode (free):** Enter your own API key in the app UI. Supports OpenAI, DeepSeek, or any OpenAI-compatible API.
 
-## 📄 许可证
+**Cloud mode (one-click):** Use the hosted version with pre-configured AI models. No API key needed.
 
-MIT
+## 📦 Supported Platforms
 
-## 📮 加入社区
+| Platform | Output Format | 
+|----------|--------------|
+| Twitter / X | Thread (numbered posts) |
+| LinkedIn | Narrative article |
+| Xiaohongshu | Casual post with emojis |
+| WeChat (公众号) | Long-form article |
+| ProductHunt | Launch title + description |
+| README | Full markdown |
 
-<img src="qq-group.png" width="160" alt="QQ群二维码" />
+## 🏗️ Tech Stack
 
-遇到问题、功能建议、交流开发经验，欢迎加入 QQ 群：
+| Technology | Purpose |
+|-----------|---------|
+| React 19 | UI framework |
+| TypeScript | Type safety |
+| Vite 7 | Build tool |
+| CSS Modules | Scoped styling |
 
-[点击链接加入群聊【宇之然项目群】](https://qm.qq.com/q/yQz5a8KL2U)
+## 🌐 Deployment
 
-群号：搜索「宇之然项目群」直达
+MultiPost is a static SPA — deploy anywhere:
+
+```bash
+npm run build
+# Upload dist/ to any static host (GitHub Pages, Vercel, Netlify, Nginx, etc.)
+```
+
+## 📄 License
+
+MIT © 2026 Yuzhiran Tech
+
+---
+
+*Built with ❤️ for indie makers and creators.*
