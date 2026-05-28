@@ -132,6 +132,21 @@ body {
   border-color: var(--accent);
   color: var(--accent);
 }
+.cloud-link {
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  transition: all .2s;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.cloud-link:hover {
+  background: var(--accent);
+  color: #fff;
+}
 .lang-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -807,6 +822,7 @@ body {
   }
 
   .header-right .github-link { display: none; }
+  .header-right .cloud-link { display: none; }
   .tagline { display: none; }
   .output-grid { grid-template-columns: 1fr; }
   .platform-btn .platform-desc { display: none; }

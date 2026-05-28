@@ -6,6 +6,7 @@
 ![screenshot](https://img.shields.io/badge/status-alpha-yellow)
 ![license](https://img.shields.io/badge/license-MIT-green)
 [![GitHub stars](https://img.shields.io/github/stars/yuzhiran/multipost?style=social)](https://github.com/yuzhiran/multipost)
+[![Try Cloud Version](https://img.shields.io/badge/☁️-Try_Cloud_Version-blue)](https://multiscene.yzrcloud.cn)
 
 ## ✨ Features
 
@@ -34,7 +35,7 @@ npm run preview  # Serve the built files locally
 
 **BYOK mode (free):** Enter your own API key in the app UI. Supports OpenAI, DeepSeek, or any OpenAI-compatible API.
 
-**Cloud mode (one-click):** Use the hosted version with pre-configured AI models. No API key needed.
+**Cloud mode (one-click):** [Try the hosted version →](https://multiscene.yzrcloud.cn) with pre-configured AI models. No API key needed.
 
 ## 📦 Supported Platforms
 

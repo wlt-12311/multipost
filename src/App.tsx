@@ -186,7 +186,8 @@ export default function App() {
         </div>
         <div className="header-right">
           <LangSwitcher />
-          <a className="github-link" href={SITE_URL} target="_blank" rel="noopener noreferrer">⭐ Star on GitHub</a>
+          <a className="cloud-link" href="https://multiscene.yzrcloud.cn" target="_blank" rel="noopener noreferrer">☁️ Cloud</a>
+          <a className="github-link" href={SITE_URL} target="_blank" rel="noopener noreferrer">⭐ Star</a>
           <a
             className="github-link"
             href="#"
